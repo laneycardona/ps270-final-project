@@ -7,8 +7,11 @@ output:
     self_contained: false
 ---
 
+## Project ideas
 
+I'm interested in looking at poll or survey data for the presidental elections to find any relationships between re-elections for sitting presidents. 
 
-## Project thoughts
+## My Research Question
+How effectively do midterm approval ratings predict presidential re-election outcomes? 
 
-I am interested in exploring data related to the upcoming election. I'm interested in looking at the poll data based on factors such as states and voter demographics. 
+My hypothesis is that sitting presidents with higher midterm approval ratings are positively correlated with an increased likelihood of their reelection. Midterm approval ratings signify how well citizens believe the administration is doing. Therefore if a sitting president has a higher midterm approval rating, they should be more likely to be re-elected in the next election, as it shows that citizens approve of the way things are going for them. The explanatory variable is the midterm approval ratings of the sitting president. This is measured by using national polls and surveys that reflect the respondents' approval or disapproval of the president's performance. The outcome variable is the presidential re-election outcome. This is measured by two possible outcomes, whether the president is re-elected or not, and I will be looking to see what the relationship is between midterm approval ratings and these outcomes. Patterns that show that higher midterm approval ratings are consistently correlated with successful re-elections would support my hypothesis that approval ratings do have impact on electoral outcomes. If there are patterns that show a negative correlation, in which high approval ratings weren't associated with re-elections, or if low approval ratings were associated with re-elections, then my hypothesis would be disproven. 
