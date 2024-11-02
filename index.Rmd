@@ -33,14 +33,6 @@ My hypothesis is that participants with more conservative ideologies will be les
 
 
 ```{r}
-average_change <- trains |>
-  mutate(treatment = if_else(treatment == 1, "Treated", "Control")) |>
-  group_by(ideology, treatment) |>
-  summarize(Average = mean(change, na.rm = TRUE)) |>
-  pivot_wider(names_from = treatment,
-              values_from = Average) |>
-  mutate(average_change = `Treated` - `Control`)
-
 trains <- trains |>
   mutate(ideology_group = case_when(
     ideology == 1 ~ "1. Most Liberal",
