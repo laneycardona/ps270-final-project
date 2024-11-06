@@ -61,7 +61,7 @@ ideology_plot <- ggplot(average_change, aes(x = ideology_group,
        y = "Average Change in Immigration Policy Attitudes")
 ideology_plot
 ```
-## Plotted points - another graph option 
+## Scatter plot - another graph option 
 ```{r}
 ideology_plot <- ggplot(average_change, aes(x = ideology_group,
                                             y = average_change)) +
