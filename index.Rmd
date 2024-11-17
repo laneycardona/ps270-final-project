@@ -107,6 +107,7 @@ post_treatment_plot <- ggplot(post_treatment, aes(x = ideology_group,
 post_treatment_plot
 ```
 
+## Results
 ```{r}
 attitude_change_summary <- trains |>
   summarize(
@@ -120,12 +121,6 @@ knitr::kable(attitude_change_summary)
 ```
 
 
-The table shows the average attitudes regarding immigration in the country before and after interacting with an immigrant from a scale of 1-5, where 1 represents the most pro-immigration attitudes and 5 represents the least pro-immigration attitudes. Additionally, it highlights the average change in attitudes for each ideology group due to this interaction. The table indicates that the most conservative participants were least supportive of increasing the number of immigrants in the country, while the most liberal participants were most supportive. This is to be expected, as the conservative ideology tends to be more supportive of stronger border control to limit the accessibility for immigrants to come into the country. The graph that represents the shift in attitudes regarding immigration policies after the participants interacted with the immigrant indicates that the participants in the "Most Conservative" ideology group had the greatest shift in attitudes compared to the other ideology groups. Additionally, the graph shows this ideology group had a significant negative shift, meaning that after they interacted with the immigrant, their attitudes shifted towards more pro-immigration policies, supporting my hypothesis. Finally, the last column in the table represents the attitudes of the participants after interacting with the immigrant. As I hypothesized, the attitudes regarding immigration policies after the treatment shows that the more liberal ideological groups tended to have a smaller shift in attitude. This is also consistent within liberal ideologies, as these political groups already tend to favor pro-immigration policies. 
-
-
-
-
-
-
+The table shows the average attitudes regarding immigration in the country before and after interacting with an immigrant from a scale of 1-5, where 1 represents the most pro-immigration attitudes and 5 represents the least pro-immigration attitudes. Additionally, it highlights the average change in attitudes for each ideology group due to this interaction. The table indicates that the most conservative participants were least supportive of increasing the number of immigrants in the country, while the most liberal participants were most supportive. This is to be expected, as the conservative ideology tends to be more supportive of stronger border control to limit the accessibility for immigrants to come into the country. The graph that represents the shift in attitudes regarding immigration policies after the participants interacted with the immigrant indicates that the participants in the "Most Conservative" ideology group had the greatest shift in attitudes compared to the other ideology groups. Additionally, the graph shows this ideology group had a significant negative shift, meaning that after they interacted with the immigrant, their attitudes shifted towards more pro-immigration policies, supporting my hypothesis. Finally, the last column in the table represents the attitudes of the participants after interacting with the immigrant. As I hypothesized, the attitudes regarding immigration policies after the treatment shows that the more liberal ideological groups tended to have a smaller shift in attitude. This is also consistent within liberal ideologies, as these political groups already tend to favor pro-immigration policies. Therefore, according to this data, political ideologies are associated with attitudes toward immigration policies. Furthermore, the "Most Conservative" ideology group had a much more significant shift in attitudes regarding these policies compared to the "Most Liberal" ideology group.
 
 
