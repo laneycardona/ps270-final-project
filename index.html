@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/figure-html5/unnamed-chunk-6-1.png","index_files/figure-html5/unnamed-chunk-7-1.png","index_files/figure-html5/unnamed-chunk-8-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.28/header-attrs.js","index_files/header-attrs-2.29/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-10-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/figure-html5/unnamed-chunk-6-1.png","index_files/figure-html5/unnamed-chunk-7-1.png","index_files/figure-html5/unnamed-chunk-8-1.png","index_files/figure-html5/unnamed-chunk-9-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.28/header-attrs.js","index_files/header-attrs-2.29/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1621,11 +1621,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 3 3. Moderate                   3.08         3.33        -0.25  
 4 4. Conservative               3.64         3.55         0.0909
 5 5. Most Conservative          3.25         4           -0.75  </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>trains</span> <span class='op'>&lt;-</span> <span class='va'>trains</span> <span class='op'>|&gt;</span></span>
+<span>   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>average_change <span class='op'>=</span> <span class='va'>numberim.post</span> <span class='op'>-</span> <span class='va'>numberim.pre</span><span class='op'>)</span></span></code></pre>
+</div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>pre_treatment</span> <span class='op'>&lt;-</span> <span class='va'>trains</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>treatment <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>treatment</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='st'>"Treated"</span>, <span class='st'>"Control"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>treatment</span> <span class='op'>==</span> <span class='st'>"Treated"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>ideology_group</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>numberim.pre <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>numberim.pre</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>pre_treatment <span class='op'>=</span> <span class='va'>numberim.pre</span><span class='op'>)</span></span>
@@ -1634,16 +1639,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <pre><code># A tibble: 5 × 3
   ideology_group       numberim.pre pre_treatment
   &lt;chr&gt;                       &lt;dbl&gt;         &lt;dbl&gt;
-1 1. Most Liberal              2.57          2.57
-2 2. Liberal                   2.6           2.6 
-3 3. Moderate                  3.03          3.03
-4 4. Conservative              3.38          3.38
+1 1. Most Liberal              3             3   
+2 2. Liberal                   2.26          2.26
+3 3. Moderate                  3.33          3.33
+4 4. Conservative              3.55          3.55
 5 5. Most Conservative         4             4   </code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>post_treatment</span> <span class='op'>&lt;-</span> <span class='va'>trains</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>treatment <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>treatment</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='st'>"Treated"</span>, <span class='st'>"Control"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>treatment</span> <span class='op'>==</span> <span class='st'>"Treated"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>ideology_group</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>numberim.post <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>numberim.post</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>post_treatment <span class='op'>=</span> <span class='va'>numberim.post</span><span class='op'>)</span></span>
@@ -1652,11 +1658,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <pre><code># A tibble: 5 × 3
   ideology_group       numberim.post post_treatment
   &lt;chr&gt;                        &lt;dbl&gt;          &lt;dbl&gt;
-1 1. Most Liberal               2.57           2.57
-2 2. Liberal                    2.7            2.7 
-3 3. Moderate                   3              3   
-4 4. Conservative               3.38           3.38
-5 5. Most Conservative          2.88           2.88</code></pre>
+1 1. Most Liberal               3.2            3.2 
+2 2. Liberal                    2.79           2.79
+3 3. Moderate                   3.08           3.08
+4 4. Conservative               3.64           3.64
+5 5. Most Conservative          3.25           3.25</code></pre>
 </div>
 <h2 id="bar-graph-showing-participant-attitudes-toward-immigration-policies-before-treatment">Bar Graph Showing Participant Attitudes Toward Immigration Policies Before Treatment</h2>
 <div class="layout-chunk" data-layout="l-body">
@@ -1706,62 +1712,64 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><img src="index_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
 </div>
 <h2 id="results">Results</h2>
+<p>The table shows the average attitudes regarding immigration in the country before and after interacting with an immigrant from a scale of 1-5, where 1 represents the most pro-immigration attitudes and 5 represents the least pro-immigration attitudes. Additionally, it highlights the average change in attitudes for each ideology group due to this interaction. The table indicates that the most conservative participants were least supportive of increasing the number of immigrants in the country, while the most liberal participants were most supportive. This is to be expected, as the conservative ideology tends to be more supportive of stronger border control to limit the accessibility for immigrants to come into the country. The graph that represents the shift in attitudes regarding immigration policies after the participants interacted with the immigrant indicates that the participants in the “Most Conservative” ideology group had the greatest shift in attitudes compared to the other ideology groups. Additionally, the graph shows this ideology group had a significant negative shift, meaning that after they interacted with the immigrant, their attitudes shifted towards more pro-immigration policies, supporting my hypothesis. Finally, the last column in the table represents the attitudes of the participants after interacting with the immigrant. As I hypothesized, the attitudes regarding immigration policies after the treatment shows that the more liberal ideological groups tended to have a smaller shift in attitude. This is also consistent within liberal ideologies, as these political groups already tend to favor pro-immigration policies. Therefore, according to this data, political ideologies are associated with attitudes toward immigration policies. Furthermore, the “Most Conservative” ideology group had a much more significant shift in attitudes regarding these policies compared to the “Most Liberal” ideology group.</p>
+<h2 id="introduction">Introduction</h2>
+<p>My research observed how political ideologies are associated with attitudes toward immigration policies, specifically looking how the level of attitude shifts regarding these policies differed depending on the political demographic of the participant. My hypothesis is that the participants with more conservative ideologies will be initially less likely to support increasing the number of immigrants allowed in the country, but after interacting with foreigners they will have a greater positive shift in attitudes towards pro-immigration policies compared to those with democratic views. I expect that people who are more liberal will have a smaller shift after this interaction, as they already tend to favor pro-immigration policies.</p>
+<p>This is significant, particularly in our country where immigration is a very politically charged topic, as it may seek to explain how individuals’ beliefs and values evolve, while also bridging the current nation-wide political divide. By exploring how there may be some common ground between Conservatives and Liberals, this research may be able to help dismantle political polarization and enable greater opportunities for healthy discourse that can offer potential solutions to current policy debates, in this case regarding immigration.</p>
+<h2 id="data">Data</h2>
+<p>The data for this research comes from a randomized field experiment conducted by Harvard Professor, Ryan Enos. He focused on individuals from overwhelmingly white communities who rode the communal rail line, and explored how exposure to demographic change affected their political views. His study was published in the article “Causal Effect of Intergroup Contact on Exclusionary Attitudes.” In the experiment, the trains were randomly assigned to either the “Treated group” or the “Control group,” where the treatment involved the presence of two native Spanish-speaking confederates meant to simulate the predicted demographic change in the United States.</p>
+<p>The independent variable is the political ideologies of the participants, measured by the survey data for each participant from the experiment. Political ideologies are likely to impact individuals’ pre-existing beliefs, which would set a baseline for their attitudes towards immigration before treatment, and may impact their responses to treatment. Through this method, we can determine how the treatment effects differ depending on the participants’ political ideology.</p>
+<p>The dependent variable, the participants’ shift in attitudes regarding immigration policies, is measured using a survey question, on a 5 point scale, before and after the treatment. Participants were asked whether or not the number of immigrants in the country should increase or decrease, where 1 indicates the participant believes the number of immigrants should increase and 5 indicates the participant believes the number of immigrants should decrease. The attitude shift of each ideology group is represented by the difference between their responses before and after treatment.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>attitude_change_summary</span> <span class='op'>&lt;-</span> <span class='va'>trains</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span></span>
-<span>    <span class='va'>pre_treatment</span>,</span>
-<span>    <span class='va'>average_change</span>,</span>
-<span>    <span class='va'>post_treatment</span></span>
-<span>  <span class='op'>)</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>numberim.pre</span>, <span class='op'>-</span><span class='va'>numberim.post</span><span class='op'>)</span></span>
-<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>attitude_change_summary</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>pre_treatment_plot</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>pre_treatment</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ideology_group</span>,</span>
+<span>                                               y <span class='op'>=</span> <span class='va'>pre_treatment</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"identity"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Attitudes Toward Immigration Policies by Ideology Before Treatment"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Ideology Group"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Attitudes Towards Immigration in the Country</span></span>
+<span><span class='st'>       (1 = Increase, 5 = Decrease)"</span>,</span>
+<span>       subtitle <span class='op'>=</span> <span class='st'>"Participants Were Asked if the Number of Immigrants in the Country Should Increase or Decrease"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span><span class='va'>pre_treatment_plot</span></span></code></pre>
 </div>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">ideology_group</th>
-<th style="text-align: right;">pre_treatment</th>
-<th style="text-align: right;">average_change</th>
-<th style="text-align: right;">post_treatment</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">1. Most Liberal</td>
-<td style="text-align: right;">2.571429</td>
-<td style="text-align: right;">0.2000000</td>
-<td style="text-align: right;">2.571429</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2. Liberal</td>
-<td style="text-align: right;">2.600000</td>
-<td style="text-align: right;">0.5263158</td>
-<td style="text-align: right;">2.700000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">3. Moderate</td>
-<td style="text-align: right;">3.031250</td>
-<td style="text-align: right;">-0.2500000</td>
-<td style="text-align: right;">3.000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">4. Conservative</td>
-<td style="text-align: right;">3.380952</td>
-<td style="text-align: right;">0.0909091</td>
-<td style="text-align: right;">3.380952</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">5. Most Conservative</td>
-<td style="text-align: right;">4.000000</td>
-<td style="text-align: right;">-0.7500000</td>
-<td style="text-align: right;">2.875000</td>
-</tr>
-</tbody>
-</table>
+<p><img src="index_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
 </div>
-<p>The table shows the average attitudes regarding immigration in the country before and after interacting with an immigrant from a scale of 1-5, where 1 represents the most pro-immigration attitudes and 5 represents the least pro-immigration attitudes. Additionally, it highlights the average change in attitudes for each ideology group due to this interaction. The table indicates that the most conservative participants were least supportive of increasing the number of immigrants in the country, while the most liberal participants were most supportive. This is to be expected, as the conservative ideology tends to be more supportive of stronger border control to limit the accessibility for immigrants to come into the country. The graph that represents the shift in attitudes regarding immigration policies after the participants interacted with the immigrant indicates that the participants in the “Most Conservative” ideology group had the greatest shift in attitudes compared to the other ideology groups. Additionally, the graph shows this ideology group had a significant negative shift, meaning that after they interacted with the immigrant, their attitudes shifted towards more pro-immigration policies, supporting my hypothesis. Finally, the last column in the table represents the attitudes of the participants after interacting with the immigrant. As I hypothesized, the attitudes regarding immigration policies after the treatment shows that the more liberal ideological groups tended to have a smaller shift in attitude. This is also consistent within liberal ideologies, as these political groups already tend to favor pro-immigration policies. Therefore, according to this data, political ideologies are associated with attitudes toward immigration policies. Furthermore, the “Most Conservative” ideology group had a much more significant shift in attitudes regarding these policies compared to the “Most Liberal” ideology group.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>This table shows the relationship between the political ideologies of the participants and how they felt about whether immigrants in the country should increase or decrease before treatment. From this table, the data indicates that the participants who were most conservative had the most negative views towards immigration in the country, whereas the liberal participants had more positive views towards immigration. This is to be expected, as these beliefs align with the traditional values of Conservative and Liberal political ideologies. My research explores how the differing political ideologies will result in different levels of shifts in attitudes.</p>
+<h2 id="results-1">Results</h2>
+<h2 id="participants-shifts-in-attitudes-toward-immigration-policies-after-treatment">Participants’ Shifts in Attitudes Toward Immigration Policies After Treatment</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ideology_shift_plot</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>average_change</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ideology_group</span>, </span>
+<span>                                            y <span class='op'>=</span> <span class='va'>average_change</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"identity"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Shift in Attitudes Toward Immigration Policies by Ideology After Treatment"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Ideology Group"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Average Change in Immigration Policy Attitudes"</span>,</span>
+<span>       subtitle <span class='op'>=</span> <span class='st'>"The participants were later asked the same question, reflecting the difference in attitudes before and after interacting with the foreigners"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span><span class='va'>ideology_shift_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+</div>
+<p>This bar graph shows the average change in attitudes towards immigration policies after treatment, representing the difference in the attitudes from before and after participants interacted with the foreigners. The average change in attitudes shows either a positive or negative shift from their pre-existing beliefs before treatment. The scale used in this analysis indicates that a value of 1 reflects a positive attitude towards immigration, while a value of 5 reflects a negative attitude towards immigration. Since lower values reveal a more positive attitude towards immigration, a decrease in value after treatment suggests a positive shift in attitudes towards immigration. On the other hand, an increase in value after treatment would suggest a negative shift in attitudes towards immigration. From this data, the participants in the “Most Conservative” group experienced a strong positive shift in attitudes after treatment, forming a more supportive stance to immigration than before. Interestingly, the participants in the “Liberal” group experienced a negative shift away from positive immigration attitudes.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://broom.tidymodels.org/'>broom</a></span><span class='op'>)</span></span>
+<span><span class='va'>reg</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>average_change</span> <span class='op'>~</span> <span class='va'>ideology_group</span>, data <span class='op'>=</span> <span class='va'>trains</span><span class='op'>)</span></span>
+<span><span class='va'>reg_table</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>reg</span><span class='op'>)</span></span>
+<span><span class='va'>reg_table</span></span></code></pre>
+</div>
+<pre><code># A tibble: 5 × 5
+  term                            estimate std.error statistic p.value
+  &lt;chr&gt;                              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1 (Intercept)                    -2.20e-16     0.209 -1.05e-15 1.00   
+2 ideology_group2. Liberal        1.00e- 1     0.243  4.11e- 1 0.682  
+3 ideology_group3. Moderate      -3.13e- 2     0.251 -1.25e- 1 0.901  
+4 ideology_group4. Conservative   3.11e-16     0.270  1.15e-15 1.00   
+5 ideology_group5. Most Conserv… -1.12e+ 0     0.347 -3.24e+ 0 0.00157</code></pre>
+</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
