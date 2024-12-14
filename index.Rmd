@@ -8,17 +8,6 @@ output:
 ---
 
 
-## Project Ideas 
-
-I’m interested in looking at the poll data based on factors such as states and voter demographics. I think it would be interesting to see if there are any correlations or relationships between voters and their attitudes regarding certain issues, such as immigration. For example, looking to see if people who have varying political ideologies had different levels of attitude change on immigration policies compared those with a different ideology. Additionally, looking to see how their political ideologies correlate between voting patterns and their overall attitudes regarding immigration policies could also be interesting. 
-
-
-## My Research Question 
-
-How are political ideologies associated with attitudes toward immigration policies among participants, and are there differences in the level of attitude shifts regarding these policies depending on the demographic of the participant?
-
-My hypothesis is that participants with more conservative ideologies will be less likely to support increasing the number of immigrants allowed in the country. Additionally, I think there will be a greater positive shift in attitudes towards pro-immigration policies within this group. People with more conservative beliefs and values tend to oppose increasing the amount of immigrants in the country, as they often perceive immigrants as a competition for jobs and resources. However, I think that after having an interaction with an immigrant, those who tend to favor anti-immigration policies may have a greater attitude shift towards pro-immigration policies compared to those who have more liberal ideologies. I expect that people who are more liberal will have a smaller shift after this interaction, as they already tend to favor pro-immigration policies. The explanatory variable is the political ideologies of the participants. This is measured through the survey data that represents each participant from the experiment. The outcome variable is the attitude shift regarding immigration policies between participants who have different political ideologies. This is measured by observing the attitudes of the participants before and after interacting with the confederate immigrant, to determine which group has a greater attitude shift regarding immigration policies. Patterns that show participants who were conservative were more likely to start out favoring a decrease in immigrants in the country would support my hypothesis. Additionally, my hypothesis would also be supported if after the encounter with the immigrant, conservative participants had a greater shift in positive attitudes towards immigration policies compared to those with liberal ideologies. However, if patterns show a negative correlation, in which the interaction with an immigrant resulted in either a smaller shift in attitudes for conservatives compared to liberals, or if there was a negative shift in attitudes, in which conservatives were even less likely to support immigrants in the country after the interaction, then my hypothesis would be disproved. 
-
 
 ```{r}
 library(ps270data)
@@ -124,18 +113,18 @@ The table shows the average attitudes regarding immigration in the country befor
 
 ## Introduction
 
-My research observed how political ideologies are associated with attitudes toward immigration policies, specifically looking how the level of attitude shifts regarding these policies differed depending on the political demographic of the participant. My hypothesis is that the participants with more conservative ideologies will be initially less likely to support increasing the number of immigrants allowed in the country, but after interacting with foreigners they will have a greater positive shift in attitudes towards pro-immigration policies compared to those with democratic views. I expect that people who are more liberal will have a smaller shift after this interaction, as they already tend to favor pro-immigration policies. 
+My research observed how political ideologies are associated with attitudes toward immigration policies, specifically looking how the level of attitude shifts regarding these policies differed depending on the political demographic of the participant. My hypothesis is that the participants with conservative ideologies will be initially less likely to support increasing the number of immigrants allowed in the country, but after interacting with foreigners they will have a greater shift in attitudes towards pro-immigration policies compared to those with liberal views. People with conservative beliefs and values tend to oppose increasing the amount of immigrants in the country, as they often perceive immigrants as a competition for jobs and resources. However, I think encountering foreigners in a casual setting may humanize them for these conservatives, shifting their beliefs to see them as individuals rather than as competition. I expect that liberals will have a smaller shift after this interaction, as they already tend to have positive attitudes towards immigration in the country. 
 
-This is significant, particularly in our country where immigration is a very politically charged topic, as it may seek to explain how individuals' beliefs and values evolve, while also bridging the current nation-wide political divide. By exploring how there may be some common ground between Conservatives and Liberals, this research may be able to help dismantle political polarization and enable greater opportunities for healthy discourse that can offer potential solutions to current policy debates, in this case regarding immigration. 
+This research is significant, particularly in our country where immigration is a very politically charged topic, as it may seek to explain how individuals' beliefs and values evolve, while also bridging the current nation-wide political divide. By exploring how there may be some common ground between conservatives and liberals, this research may be able to help dismantle political polarization and enable greater opportunities for healthy discourse that can offer potential solutions to current policy debates, in this case regarding immigration. 
 
 
 ## Data
 
-The data for this research comes from a randomized field experiment conducted by Harvard Professor, Ryan Enos. He focused on individuals from overwhelmingly white communities who rode the communal train and explored how exposure to demographic change affected their political views. His study was published in the article "Causal Effect of  Intergroup Contact on Exclusionary Attitudes." In the experiment, the trains were randomly assigned to either the "Treated group" or the "Control group," where the treatment involved the presence of two native Spanish-speaking confederates meant to simulate the predicted demographic change in the United States. Those who were in the control group never encountered the confederates.
+The data for this research comes from a randomized field experiment conducted by Harvard Professor, Ryan Enos. He focused on individuals from overwhelmingly white communities who rode the communal train and explored how exposure to demographic change affected their political views. His study was published in the article "Causal Effect of  Intergroup Contact on Exclusionary Attitudes." In the experiment, the trains were randomly assigned to either the "Treated group" or the "Control group," where the treatment involved the presence of two native Spanish-speaking confederates meant to simulate the predicted demographic change in the United States. Those who were in the control group never encountered the confederates. My research uses a before-and-after design, as I am comparing the attitudes before and after the participants receive treatment to determine the degree of changes in views the participants experience.   
 
 The independent variable is the political ideologies of the participants, measured by the survey data for each participant from the experiment. Political ideologies are likely to impact individuals' pre-existing beliefs, which would set a baseline for their attitudes towards immigration before treatment, and may impact their responses to treatment. Through this method, we can determine how the treatment effects differ depending on the participants' political ideology. 
 
-The dependent variable, the participants' shift in attitudes regarding immigration policies, is measured using a survey question, on a 5 point scale, before and after the treatment. Participants were asked whether or not the number of immigrants in the country should increase or decrease, where 1 indicates the participant believes the number of immigrants should increase and 5 indicates the participant believes the number of immigrants should decrease. The attitude shift of each ideology group is represented by the difference between their responses before and after treatment. 
+The dependent variable, the participants' shift in attitudes regarding immigration policies, is measured using a survey question on a 5 point Likert scale, before and after the treatment. Participants were asked whether or not the number of immigrants in the country should increase or decrease, where 1 indicates the participant believes the number of immigrants should increase and 5 indicates the participant believes the number of immigrants should decrease. The attitude shift of each ideology group is represented by the difference between their responses before and after treatment. 
 
 ```{r}
 pre_treatment_plot <- ggplot(pre_treatment, aes(x = ideology_group,
@@ -144,8 +133,10 @@ pre_treatment_plot <- ggplot(pre_treatment, aes(x = ideology_group,
   geom_bar(stat = "identity") +
   scale_fill_manual(values = c("1. Most Liberal" = "blue",
                                "2. Liberal" = "blue",
+                               "3. Moderate" = "grey",
                                "4. Conservative" = "red",
-                               "5. Most Conservative" = "red")) +
+                               "5. Most Conservative" = "red"),
+                    name = "Political Ideology") +
   labs(title = "Attitudes Toward Immigration Policies by Ideology Before Treatment",
        x = "Ideology Group",
        y = "Attitudes Towards Immigration in the Country
@@ -153,7 +144,7 @@ pre_treatment_plot <- ggplot(pre_treatment, aes(x = ideology_group,
        subtitle = "Participants were asked if the number of immigrants in the country should increase or decrease") +
   theme_minimal() +
     theme(
-    axis.text.x = element_text(size = 9, family = "Georgia"),
+    axis.text.x = element_text(size = 7, family = "Georgia"),
     axis.text.y = element_text(size = 10, family = "Georgia"),
     axis.title.x = element_text(size = 12, face = "bold", family = "Georgia"),
     axis.title.y = element_text(size = 11, face = "bold", family = "Georgia"),
@@ -166,11 +157,11 @@ pre_treatment_plot <- ggplot(pre_treatment, aes(x = ideology_group,
   )
 pre_treatment_plot
 ```
-
 This table shows the relationship between the political ideologies of the participants and how they felt about whether immigrants in the country should increase or decrease before treatment. From this table, the data indicates that the participants who were most conservative had the most negative views towards immigration in the country, whereas the liberal participants had more positive views towards immigration. This is to be expected, as these beliefs align with the traditional values of Conservative and Liberal political ideologies. My research explores how the differing political ideologies will result in different levels of shifts in attitudes after recieving treatment. 
 
-## Results
 
+## Results
+ADD A CAPTION TO THIS GRAPH
 ```{r}
 ideology_shift_plot <- ggplot(average_change, aes(x = ideology_group, 
                                             y = average_change,
@@ -178,15 +169,17 @@ ideology_shift_plot <- ggplot(average_change, aes(x = ideology_group,
   geom_bar(stat = "identity") +
   scale_fill_manual(values = c("1. Most Liberal" = "blue",
                                "2. Liberal" = "blue",
+                               "3. Moderate" = "grey",
                                "4. Conservative" = "red",
-                               "5. Most Conservative" = "red")) +
+                               "5. Most Conservative" = "red"),
+                    name = "Political Ideology") +
    labs(title = "Shift in Attitudes Toward Immigration Policies by Ideology After Treatment",
        x = "Ideology Group",
        y = "Average Change in Immigration Policy Attitudes",
        subtitle = "The participants were asked the same question after interacting with the foreigners") +
   theme_minimal() +
   theme(
-    axis.text.x = element_text(size = 9, family = "Georgia"),
+    axis.text.x = element_text(size = 7, family = "Georgia"),
     axis.text.y = element_text(size = 10, family = "Georgia"),
     axis.title.x = element_text(size = 12, face = "bold", family = "Georgia"),
     axis.title.y = element_text(size = 11, face = "bold", family = "Georgia"),
@@ -224,22 +217,23 @@ trains
 ```{r}
 reg1 <- lm(average_change ~ binary_variable, data = trains)
 reg1_table <- tidy(reg1)
-reg1_table
+knitr::kable(reg1_table, digits = 3)
 ```
-To create a clearer analysis that observed how liberals and conservatives as a whole differed in their shifts in attitude, I created a binary variable, in which the "Most Liberal" and "Liberal" groups were assigned to 0, and the "Conservative" and "Most Conservative" groups were assigned to 1. This regression output shows the relationship between these two combined ideology groups and their average change in attitudes towards immigration policies in the United States. The Intercept category represents the average change in attitudes for the reference group, here it refers to the liberal groups. The binary variable category compares the conservative groups to the liberal groups. The binary variable category compares the conservative groups to the liberal groups. The main coefficient for the intercept is 0.07407407, indicating that the average change in attitudes for liberals slightly increased. The main coefficient for the binary variable is -0.38441890, suggesting that in relation to the liberals, on average the conservatives experienced shifts that were about 0.384 less than liberals. Therefore, based on the scale of this experiment, the liberals experienced a slightly negative change in attitudes towards immigration policies, whereas the conservatives had a shift towards more positive attitudes towards immigration policies. 
+To create a clearer analysis that observed how liberals and conservatives as a whole differed in their shifts in attitude, I created a binary variable, in which the "Most Liberal" and "Liberal" groups were assigned to 0, and the "Conservative" and "Most Conservative" groups were assigned to 1. This regression output shows the relationship between these two combined ideology groups and their average change in attitudes towards immigration policies in the United States. The Intercept category represents the average change in attitudes for the reference group, here it refers to the liberal groups. The binary variable category compares the conservative groups to the liberal groups. The binary variable category compares the conservative groups to the liberal groups. The main coefficient for the intercept is 0.074, indicating that the average change in attitudes for liberals slightly increased. The main coefficient for the binary variable is -0.384, suggesting that in relation to the liberals, on average the conservatives experienced shifts that were about 0.384 less than liberals. Therefore, based on the scale of this experiment, the liberals experienced a slightly negative change in attitudes towards immigration policies, whereas the conservatives had a shift towards more positive attitudes towards immigration policies. 
 
-
+The p-value of the binary variable is 0.052. With an $\alpha$ of 0.05, we fail to reject the null and the variable is not statistically significant because it is greater than the significance threshold. While the main coefficient (-0.384) suggests that there could be a meaningful difference in attitude changes between liberals and conservatives, as conservatives on average shifted 0.384 points closer to positive attitudes toward immigration policies than liberals, the p-value is slightly above the significance threshold. Therefore, because the variable is just barely above the threshold, it is marginally significant, indicating that there may be a difference, but it is not significant enough to confidently claim causality. 
 
 
 ```{r}
-
 reg1_plot <- ggplot(reg1_table, aes(x = term, y = estimate)) +
   geom_point(size = 3, color = c("blue", "red")) +
   geom_errorbar(aes(ymin = estimate - std.error, ymax = estimate + std.error), width = 0.2) +
   labs(
     title = "Regression Results",
     x = "Ideology",
-    y = "Coefficient"
+    y = "Coefficient",
+    caption = "A negative coefficient indicates participants are shifting towards more positive attitutdes.
+    A positive coefficient indicates participants are shifting towards more negative attitudes. "
   ) +
   scale_x_discrete(labels = c("Liberal", "Conservative")) +
   theme_minimal() +
@@ -248,10 +242,19 @@ reg1_plot <- ggplot(reg1_table, aes(x = term, y = estimate)) +
     axis.text.y = element_text(size = 12, family = "Georgia"),
     axis.title.x = element_text(size = 13, face = "bold", family = "Georgia"),
     axis.title.y = element_text(size = 13, face = "bold", family = "Georgia"),
+    plot.caption.position = "panel", 
+    plot.caption = element_text(size = 10, family = "Georgia"), 
     plot.title = element_text(size = 18, face = "bold", family = "Georgia"),
     panel.border = element_rect(color = "black", fill = NA, size = 1)
   )
   
 reg1_plot
 ```
-This graph reflects a visualization of the regression. 
+This graph shows a visualization of the regression output above, indicating on average, liberals experienced a small shift toward negative attitudes on immigration policies, while conservatives moved towards more positive attitudes. Additionally, it shows that not only did conservatives experience a greater overall shift, but their average attitude change also indicates they shifted toward more favorable views regarding immigration in the country. However, the wide error bars for the binary variable suggest that this estimate is less precise, meaning that there is greater uncertainty regarding the reliability for this estimate. 
+
+
+## Conclusion 
+
+Initially, the data aligned with my hypothesis, in which conservatives started out with the most negative views on immigration and on average, after encountering the confederates, they experienced a greater shift in attitudes towards more favorable attitudes on immigration compared to liberals. However, the p-value indicates the main coefficient was not statistically significant. While the coefficient shown in the regression supports my hypothesis, since the binary variable comparing conservatives to liberals was above the significance threshold, it is unclear if there is a meaningful difference in the attitude shifts between the two ideology groups. Additionally, because of the wide standard error of the binary variable, this relationship is not completely reliable. Therefore, my hypothesis is not fully supported, and these results should be taken with caution due to its lack of certainty and precision. The presence of external influences as confounding factors is one of the most significant limitations of this research. Because this experiment used a before-and-after research design, the results don't consider the possible external influences, such as peer interactions, media exposure, or major events that could affect the participants' shifts in attitudes. Therefore, through the fundamental problem of causal inference, it is impossible to determine the confederate interaction is what changed the participants' attitudes. To improve my analysis, I would increase the sample size of the experiment. A larger sample size would reduce the margin of error, creating more precise and accurate estimates of the regression coefficients. This would improve the reliability and certainty of the analysis, making it more likely that a true effect and difference can be observed if it exists. 
+
+
